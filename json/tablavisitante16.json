@@ -1,0 +1,21 @@
+{
+"name": "tablavisitante", 
+"children": [
+{"id":1,"name":"FC Bayern Muenchen","jornada":25,"jugados":13,"ganados":10,"empatados":2,"perdidos":1,"gf":23,"gc":8,"dif":15,"size":32},
+{"id":2,"name":"RB Leipzig","jornada":25,"jugados":13,"ganados":6,"empatados":3,"perdidos":4,"gf":21,"gc":17,"dif":4,"size":21},
+{"id":3,"name":"Borussia Dortmund","jornada":25,"jugados":13,"ganados":4,"empatados":4,"perdidos":5,"gf":25,"gc":20,"dif":5,"size":16},
+{"id":4,"name":"Hoffenheim","jornada":25,"jugados":12,"ganados":3,"empatados":7,"perdidos":2,"gf":18,"gc":14,"dif":4,"size":16},
+{"id":5,"name":"FC Augsburg","jornada":25,"jugados":12,"ganados":4,"empatados":3,"perdidos":5,"gf":11,"gc":14,"dif":-3,"size":15},
+{"id":6,"name":"Wolfsburg","jornada":25,"jugados":12,"ganados":4,"empatados":3,"perdidos":5,"gf":12,"gc":17,"dif":-5,"size":15},
+{"id":7,"name":"1. FC Koeln","jornada":25,"jugados":13,"ganados":3,"empatados":5,"perdidos":5,"gf":18,"gc":19,"dif":-1,"size":14},
+{"id":8,"name":"Frankfurt","jornada":25,"jugados":13,"ganados":4,"empatados":2,"perdidos":7,"gf":9,"gc":16,"dif":-7,"size":14},
+{"id":9,"name":"Bayer Leverkusen","jornada":25,"jugados":12,"ganados":4,"empatados":1,"perdidos":7,"gf":16,"gc":21,"dif":-5,"size":13},
+{"id":10,"name":"Freiburg","jornada":25,"jugados":13,"ganados":3,"empatados":4,"perdidos":6,"gf":17,"gc":25,"dif":-8,"size":13},
+{"id":11,"name":"Werder Bremen","jornada":25,"jugados":12,"ganados":3,"empatados":4,"perdidos":5,"gf":16,"gc":26,"dif":-10,"size":13},
+{"id":12,"name":"Borussia Moenchengladbach","jornada":25,"jugados":12,"ganados":3,"empatados":2,"perdidos":7,"gf":10,"gc":22,"dif":-12,"size":11},
+{"id":13,"name":"Schalke 04","jornada":25,"jugados":12,"ganados":2,"empatados":4,"perdidos":6,"gf":10,"gc":16,"dif":-6,"size":10},
+{"id":14,"name":"FC Ingolstadt","jornada":25,"jugados":13,"ganados":3,"empatados":1,"perdidos":9,"gf":11,"gc":21,"dif":-10,"size":10},
+{"id":15,"name":"Mainz","jornada":25,"jugados":12,"ganados":3,"empatados":1,"perdidos":8,"gf":11,"gc":22,"dif":-11,"size":10},
+{"id":16,"name":"Hertha Berlin","jornada":25,"jugados":13,"ganados":2,"empatados":3,"perdidos":8,"gf":13,"gc":24,"dif":-11,"size":9},
+{"id":17,"name":"Hamburg","jornada":25,"jugados":13,"ganados":2,"empatados":3,"perdidos":8,"gf":10,"gc":26,"dif":-16,"size":9},
+{"id":18,"name":"SV Darmstadt","jornada":25,"jugados":12,"ganados":0,"empatados":0,"perdidos":12,"gf":4,"gc":27,"dif":-23,"size":0}]}
