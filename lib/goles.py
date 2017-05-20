@@ -47,7 +47,7 @@ print "Loading goles.py..."
 # jornada=int(jornadainput)-1
 
 
-if jornada <0 or jornada >=34:
+if jornada <0 or jornada >=35:
 	print "No se jugó la jornada "+jornadainput+" en ese torneo. Verifique y vuelva a ingresar."
 	jornada=None
 else:
