@@ -48,7 +48,7 @@ print "Loading goles.py..."
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugó la jornada "+jornadainput+" en ese torneo. Verifique y vuelva a ingresar."
+	print "No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
 	jornada=None
 else:
 	clubes=getEquipos()
