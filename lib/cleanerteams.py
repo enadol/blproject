@@ -4,7 +4,7 @@
 #Para limpiar el json general obtenido del repositorio
 
 fname = raw_input("Enter a file name: ")
-if ( len(fname) < 1 ) : fname = '../2016-2017/bl.json'
+if ( len(fname) < 1 ) : fname = '../2017-2018/bl.json'
 
 fh = open(fname)
 stringdata=fh.read()
