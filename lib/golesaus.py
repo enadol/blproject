@@ -3,7 +3,7 @@ import urllib
 import json
 import sqlite3
 
-url="../2016-2017/bl.json"
+url="../2017-2018/bl.json"
 uh=urllib.urlopen(url)
 data=uh.read()
 js=json.loads(data)
@@ -68,7 +68,7 @@ else:
 		for fecha in range(0,jornada):
 
 			jornadascompletas=js['rounds'][fecha]['name']
-			conn = sqlite3.connect('../tabla16.sqlite')
+			conn = sqlite3.connect('../tabla17.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
 			start = 0
@@ -105,16 +105,7 @@ else:
 			cur.execute('''INSERT OR IGNORE INTO GolesVisitante (Equipo, Jornada, Goles_a_favor, Goles_en_contra, Diferencia)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaldos, subtotalb, diferencia))
 		
 
-			#cur.execute('SELECT max(id) FROM Goles')
-			#try:
-			#	row = cur.fetchone()
-    		#	if row[0] != None: 
-        	#		start = row[0]
-			#except:
-   			#	 start = 0
-   			#	 row = None
-
-#print start
+		
 			conn.commit()
 	
 		
