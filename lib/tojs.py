@@ -1,10 +1,10 @@
 from input import jornada as howmany
 import sqlite3
 
-conn = sqlite3.connect('../tabla16.sqlite')
+conn = sqlite3.connect('../tabla17.sqlite')
 cur = conn.cursor()
 
-print "Creating Javascript output on tablavoll.js..."
+print "Creating Javascript output on tablavoll17.js..."
 # howmany = int(raw_input("Cuantas jornadas? "))
 
 cur.execute('''SELECT Partidos.Equipo, Partidos.Jornada, Partidos.PJ, Partidos.PG, Partidos.PE, Partidos.PP, Goles.Goles_a_favor AS GF, Goles.Goles_en_contra AS GC, Goles.Diferencia AS DIF, Puntos.Total_Puntos AS Puntos
@@ -13,7 +13,7 @@ AND Puntos.Jornada=Partidos.Jornada AND Goles.Jornada=Puntos.Jornada AND Puntos.
 GROUP BY Partidos.Equipo
 ORDER BY Puntos DESC, DIF DESC, GF DESC''')
 
-fhand = open('../js/tablavoll16.js','w')
+fhand = open('../js/tablavoll17.js','w')
 nodes = list()
 
 for row in cur :
@@ -38,7 +38,7 @@ fhand.write(']};')
 fhand.close()
 
 #tablalocal
-fhand = open('../js/tablalocal16.js','w')
+fhand = open('../js/tablalocal17.js','w')
 nodes = list()
 
 cur.execute('''SELECT Partidos.Equipo, Partidos.Jornada, Partidos.PJ_Local, Partidos.PG_Local, Partidos.PE_Local, Partidos.PP_Local, GolesLocal.Goles_a_favor AS GF, GolesLocal.Goles_en_contra AS GC, GolesLocal.Diferencia AS DIF, Puntos.Puntos_Local AS Puntos
@@ -72,7 +72,7 @@ fhand.write(']};')
 fhand.close()
 
 #tablavisitante
-fhand = open('../js/tablavisitante16.js','w')
+fhand = open('../js/tablavisitante17.js','w')
 nodes = list()
 
 cur.execute('''SELECT Partidos.Equipo, Partidos.Jornada, Partidos.PJ_Visitante, Partidos.PG__Visitante, Partidos.PE_Visitante, Partidos.PP_Visitante, GolesVisitante.Goles_a_favor AS GF, GolesVisitante.Goles_en_contra AS GC, GolesVisitante.Diferencia AS DIF, Puntos.Puntos_Visitante AS Puntos
