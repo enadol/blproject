@@ -16,10 +16,12 @@ sumavisitante=0
 puntos=0
 sumalocal=0
 equipos=[]
+jornadas=str(jornada)
+start=0
 
 def getEquipos():
-	for fecha in range(1,5):
-		jornadascompletas=js['rounds'][fecha]['name']
+	for fecha in range(0,jornada):
+		#jornadascompletas=js['rounds'][fecha]['name']
 		
 		for i in range(0,9):
 			equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
@@ -72,11 +74,11 @@ else:
 		sumtotalvisitante=0
 
 		for fecha in range(0,jornada):
-			jornadascompletas=js['rounds'][fecha]['name']
+			#jornadascompletas=js['rounds'][fecha]['name']
 			conn = sqlite3.connect('../tabla17.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
-			start = 0
+
 			cur.execute('''CREATE TABLE IF NOT EXISTS Puntos 
 			(Equipo TEXT, Jornada INTEGER, Puntos_Local INTEGER, Puntos_Visitante INTEGER, Total_Puntos INTEGER)''')
 
@@ -104,9 +106,10 @@ else:
 				sumtotallocal=subtotaluno+subtotaldos
 				
 				sumapuntos=sumtotallocal+sumtotalvisitante
-			print "El equipo "+club+" sumaba "+str(subtotaluno)+" puntos como local a la "+jornadascompletas
-			print "El equipo "+club+" sumaba "+str(subtotaldos)+" puntos como visitante a la "+jornadascompletas	
-			print "El equipo "+club+" sumaba "+str(sumapuntos)+" puntos en total a la "+jornadascompletas
+ 			start =fecha+1
+			print "El equipo "+club+" sumaba "+str(subtotaluno)+" puntos como local a la "+str(start)
+			print "El equipo "+club+" sumaba "+str(subtotaldos)+" puntos como visitante a la "+str(start)	
+			print "El equipo "+club+" sumaba "+str(sumapuntos)+" puntos en total a la "+str(start)
 			cur.execute('''INSERT OR IGNORE INTO Puntos (Equipo, Jornada, Puntos_Local, Puntos_Visitante, Total_Puntos)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaluno, subtotaldos, sumapuntos))
 			conn.commit()			
 	

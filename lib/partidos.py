@@ -9,6 +9,7 @@ data=uh.read()
 js=json.loads(data)
 i=0
 puntos=0
+jornadas=str(jornada)
 
 
 puntoslocal=0
@@ -17,12 +18,13 @@ sumavisitante=0
 puntos=0
 sumalocal=0
 equipos=[]
+start=0
 
 
 def getEquipos():
-	for fecha in range(1,5):
-		jornadascompletas=js['rounds'][fecha]['name']
-		
+	for fecha in range(0, jornada):
+		#jornadascompletas=js['rounds'][fecha]['name']
+
 		for i in range(0,9):
 			equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
 			contrario=js['rounds'][fecha]['matches'][i]['team2']['name']
@@ -60,7 +62,7 @@ print "Loading partidos.py..."
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
+	print "No se jugo la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
 	jornada=None
 else:
 	clubes=getEquipos()
@@ -104,12 +106,12 @@ else:
 
 
 		for fecha in range(0,jornada):
-			jornadascompletas=js['rounds'][fecha]['name']
+			#jornadascompletas=js['rounds'][fecha]['name']
 
 			conn = sqlite3.connect('../tabla17.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
-			start = 0
+
 			cur.execute('''CREATE TABLE IF NOT EXISTS Partidos 
 			(Equipo TEXT, Jornada INTEGER, PJ_Local INTEGER, PJ_Visitante INTEGER, PJ INTEGER, PG_Local INTEGER, PG__Visitante INTEGER, PG INTEGER, PE_Local INTEGER, PE_Visitante INTEGER, PE INTEGER, PP_Local INTEGER, PP_Visitante INTEGER, PP INTEGER)''')
 
@@ -168,8 +170,8 @@ else:
 			sumaperdidos=subtotalperdidos1+subtotalperdidos2
 			sumatotal=sumaganados+sumaempatados+sumaperdidos
 
-
-			print "Ganados "+club+" : "+str(sumaganados)+" a la "+jornadascompletas
+			start =fecha+1
+			print "Ganados "+club+" : "+str(sumaganados)+" a la "+str(start)
 			print "Empatados: "+str(sumaempatados)
 			print "Perdidos: "+str(sumaperdidos)
 			print "Jugados local: "+str(subtotaljugados1)

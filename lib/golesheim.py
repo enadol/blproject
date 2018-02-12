@@ -12,11 +12,12 @@ i=0
 afavor=0
 encontra=0
 equipos=[]
-
+jornadas=str(jornada)
+start = 0
 
 def getEquipos():
-	for fecha in range(1,5):
-		jornadascompletas=js['rounds'][fecha]['name']
+	for fecha in range(0,jornada):
+		#jornadascompletas=js['rounds'][fecha]['name']
 		
 		for i in range(0,9):
 			equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
@@ -68,11 +69,11 @@ else:
 		diferencia=0
 		for fecha in range(0,jornada):
 
-			jornadascompletas=js['rounds'][fecha]['name']
+			#jornadascompletas=js['rounds'][fecha]['name']
 			conn = sqlite3.connect('../tabla17.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
-			start = 0
+			
 
 			cur.execute('''CREATE TABLE IF NOT EXISTS GolesLocal 
 			(Equipo TEXT, Jornada INTEGER, 
@@ -102,10 +103,10 @@ else:
 
 				diferencia=subtotaluno-subtotala
 			
-			start +=1
-			print "Goles acumulados a favor para el "+club+" en la jornada "+str(fecha+1)+": "+ str(subtotaluno)
-			print "Goles acumulados en contra para el "+club+" en la jornada "+str(fecha+1)+": "+ str(subtotala)
-			print "Diferencia acumulada de goles para el "+club+" en la jornada "+str(fecha+1)+": "+ str(diferencia)+"\n"
+			start=fecha+1
+			print "Goles acumulados a favor para el "+club+" en la jornada "+str(start)+": "+ str(subtotaluno)
+			print "Goles acumulados en contra para el "+club+" en la jornada "+str(start)+": "+ str(subtotala)
+			print "Diferencia acumulada de goles para el "+club+" en la jornada "+str(start)+": "+ str(diferencia)+"\n"
 			cur.execute('''INSERT OR IGNORE INTO GolesLocal (Equipo, Jornada, Goles_a_favor, Goles_en_contra, Diferencia)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaluno, subtotala, diferencia))
 		
 

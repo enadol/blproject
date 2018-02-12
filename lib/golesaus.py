@@ -12,11 +12,13 @@ i=0
 afavor=0
 encontra=0
 equipos=[]
-
+jornadas=str(jornada)
+start = 0
 
 def getEquipos():
-	for fecha in range(1,5):
-		jornadascompletas=js['rounds'][fecha]['name']
+	#ANTES for fecha in range(1,5):
+	for fecha in range(0,jornada):
+		#jornadascompletas=js['rounds'][fecha]['name']
 		
 		for i in range(0,9):
 			equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
@@ -48,7 +50,7 @@ print "Loading golesaus.py..."
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
+	print "No se jugó la jornada "+jornadas+" en ese torneo. Verifique y vuelva a ingresar."
 	jornada=None
 else:
 	clubes=getEquipos()
@@ -65,13 +67,14 @@ else:
 		subtotala=0
 		subtotalb=0
 		diferencia=0
+
 		for fecha in range(0,jornada):
 
-			jornadascompletas=js['rounds'][fecha]['name']
+			#jornadascompletas=js['rounds'][fecha]['name']
 			conn = sqlite3.connect('../tabla17.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
-			start = 0
+	
 
 			cur.execute('''CREATE TABLE IF NOT EXISTS GolesVisitante 
 			(Equipo TEXT, Jornada INTEGER, 
@@ -98,10 +101,10 @@ else:
 
 				diferencia=subtotaldos-subtotalb
 			
-			start +=1
-			print "Goles acumulados a favor para el "+club+" en la jornada "+str(fecha+1)+": "+ str(subtotaldos)
-			print "Goles acumulados en contra para el "+club+" en la jornada "+str(fecha+1)+": "+ str(subtotalb)
-			print "Diferencia acumulada de goles para el "+club+" en la jornada "+str(fecha+1)+": "+ str(diferencia)+"\n"
+			start=fecha+1
+			print "Goles acumulados a favor para el "+club+" en la jornada "+str(start)+": "+ str(subtotaldos)
+			print "Goles acumulados en contra para el "+club+" en la jornada "+str(start)+": "+ str(subtotalb)
+			print "Diferencia acumulada de goles para el "+club+" en la jornada "+str(start)+": "+ str(diferencia)+"\n"
 			cur.execute('''INSERT OR IGNORE INTO GolesVisitante (Equipo, Jornada, Goles_a_favor, Goles_en_contra, Diferencia)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaldos, subtotalb, diferencia))
 		
 
