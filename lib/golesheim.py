@@ -1,12 +1,16 @@
-﻿from input import jornada
+from input import jornada
 import urllib
 import json
 import sqlite3
 
-url="../2017-2018/bl.json"
-uh=urllib.urlopen(url)
-data=uh.read()
-js=json.loads(data)
+url="../2018-2019/bl.json"
+
+with open(url) as json_roh:
+	data=json_roh.read()
+	js=json.loads(data)
+	
+
+
 i=0
 
 afavor=0
@@ -43,14 +47,14 @@ def getGolesAcumulados(goleslocal, goles):
 	goleslocal=goleslocal+goles
 	return goleslocal
 
-print "Loading golesheim.py..."
+print("Loading golesheim.py...")
 # jornadainput=raw_input("Ingrese la jornada: ")
 # jornada=int(jornadainput)-1
 
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
+	print("No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar.")
 	jornada=None
 else:
 	clubes=getEquipos()
@@ -70,7 +74,7 @@ else:
 		for fecha in range(0,jornada):
 
 			#jornadascompletas=js['rounds'][fecha]['name']
-			conn = sqlite3.connect('../tabla17.sqlite')
+			conn = sqlite3.connect('../tabla18.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
 			
@@ -104,9 +108,9 @@ else:
 				diferencia=subtotaluno-subtotala
 			
 			start=fecha+1
-			print "Goles acumulados a favor para el "+club+" en la jornada "+str(start)+": "+ str(subtotaluno)
-			print "Goles acumulados en contra para el "+club+" en la jornada "+str(start)+": "+ str(subtotala)
-			print "Diferencia acumulada de goles para el "+club+" en la jornada "+str(start)+": "+ str(diferencia)+"\n"
+			print("Goles acumulados a favor para el "+club+" en la jornada "+str(start)+": "+ str(subtotaluno))
+			print("Goles acumulados en contra para el "+club+" en la jornada "+str(start)+": "+ str(subtotala))
+			print("Diferencia acumulada de goles para el "+club+" en la jornada "+str(start)+": "+ str(diferencia)+"\n")
 			cur.execute('''INSERT OR IGNORE INTO GolesLocal (Equipo, Jornada, Goles_a_favor, Goles_en_contra, Diferencia)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaluno, subtotala, diferencia))
 		
 
@@ -115,6 +119,5 @@ else:
 			conn.commit()
 	
 
-			
-uh.close()
+#uh.close()
 cur.close()
