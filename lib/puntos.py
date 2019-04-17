@@ -1,12 +1,16 @@
-﻿from input import jornada
+from input import jornada
 import urllib
 import json
 import sqlite3
 
-url="../2017-2018/bl.json"
-uh=urllib.urlopen(url)
-data=uh.read()
-js=json.loads(data)
+url="../2018-2019/bl.json"
+
+with open(url) as json_roh:
+	data=json_roh.read()
+	js=json.loads(data)
+	
+
+
 i=0
 ganador=None
 perdedor=None
@@ -51,13 +55,13 @@ def getPuntosAcumulados(puntoslocal, puntos):
 	return puntoslocal
 	
 
-print "Loading puntos.py..."
+print("Loading puntos.py...")
 # jornadainput=raw_input("Ingrese la jornada: ")
 # jornada=int(jornadainput)-1
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
+	print("No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar.")
 	jornada=None
 else:
 	clubes=getEquipos()
@@ -75,7 +79,7 @@ else:
 
 		for fecha in range(0,jornada):
 			#jornadascompletas=js['rounds'][fecha]['name']
-			conn = sqlite3.connect('../tabla17.sqlite')
+			conn = sqlite3.connect('../tabla18.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
 
@@ -106,11 +110,11 @@ else:
 				sumtotallocal=subtotaluno+subtotaldos
 				
 				sumapuntos=sumtotallocal+sumtotalvisitante
- 			start =fecha+1
-			print "El equipo "+club+" sumaba "+str(subtotaluno)+" puntos como local a la "+str(start)
-			print "El equipo "+club+" sumaba "+str(subtotaldos)+" puntos como visitante a la "+str(start)	
-			print "El equipo "+club+" sumaba "+str(sumapuntos)+" puntos en total a la "+str(start)
+			start =fecha+1
+			print("El equipo "+club+" sumaba "+str(subtotaluno)+" puntos como local a la "+str(start))
+			print("El equipo "+club+" sumaba "+str(subtotaldos)+" puntos como visitante a la "+str(start)	)
+			print("El equipo "+club+" sumaba "+str(sumapuntos)+" puntos en total a la "+str(start))
 			cur.execute('''INSERT OR IGNORE INTO Puntos (Equipo, Jornada, Puntos_Local, Puntos_Visitante, Total_Puntos)  VALUES (?, ?, ?, ?, ? )''', (club, fecha+1, subtotaluno, subtotaldos, sumapuntos))
 			conn.commit()			
 	
-uh.close()
+cur.close()

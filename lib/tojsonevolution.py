@@ -1,22 +1,22 @@
 from input import jornada as howmany
 import sqlite3
 
-conn = sqlite3.connect('../tabla17.sqlite')
+conn = sqlite3.connect('../tabla18.sqlite')
 cur = conn.cursor()
 equipos=["Hertha BSC", "Werder Bremen", "Schalke 04", "VfB Stuttgart", "Eintracht Frankfurt",
-"FC Augsburg", "1. FC Koeln", "VfL Wolfsburg", "SC Freiburg", "Bayer 04 Leverkusen",
-"1899 Hoffenheim", "FC Bayern Muenchen", "Hamburger SV", "RB Leipzig", "Hannover 96",
+"FC Augsburg", "1. FC Nuernberg", "VfL Wolfsburg", "SC Freiburg", "Bayer 04 Leverkusen",
+"1899 Hoffenheim", "FC Bayern Muenchen", "Fortuna Duesseldorf", "RB Leipzig", "Hannover 96",
 "Borussia Dortmund", "Borussia M'gladbach", "1. FSV Mainz 05"]
 id=1
 
 
-print "Creating JSON output on tablaevolution17.json..."
+print("Creating JSON output on tablaevolution18.json...")
 
 # howmany = int(raw_input("Cuantas jornadas? "))
 
 ##cur = conn.cursor()
 
-fhand = open('../json/tablaevolution17.json','w')
+fhand = open('../json/tablaevolution18.json','w')
 fhand.write('[')
 
 for equipo in equipos:
@@ -162,4 +162,4 @@ fhand.close()
 
 cur.close()
 
-print "NO OLVIDAR PARA BLVISUAL.HTML CAMBIAR EQUIPO POR NAME Y PUNTOS POR SIZE"
+print("NO OLVIDAR PARA BLVISUAL.HTML CAMBIAR EQUIPO POR NAME Y PUNTOS POR SIZE")

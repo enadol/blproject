@@ -1,12 +1,15 @@
 from input import jornada
-import urllib
 import json
+#import requests
 import sqlite3
 
-url="../2017-2018/bl.json"
-uh=urllib.urlopen(url)
-data=uh.read()
-js=json.loads(data)
+url="../2018-2019/bl.json"
+
+with open(url) as json_roh:
+	data=json_roh.read()
+	js=json.loads(data)
+	
+
 i=0
 puntos=0
 jornadas=str(jornada)
@@ -55,14 +58,14 @@ def getPartidosAcumulados(partidosviejo, partidosnuevo):
 	partidosviejo=partidosviejo+partidosnuevo
 	return partidosnuevo
 
-print "Loading partidos.py..."
+print("Loading partidos.py...")
 # jornadainput=raw_input("Ingrese la jornada: ")
 # jornada=int(jornadainput)-1
 
 
 
 if jornada <0 or jornada >=35:
-	print "No se jugo la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar."
+	print("No se jugo la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar.")
 	jornada=None
 else:
 	clubes=getEquipos()
@@ -108,7 +111,7 @@ else:
 		for fecha in range(0,jornada):
 			#jornadascompletas=js['rounds'][fecha]['name']
 
-			conn = sqlite3.connect('../tabla17.sqlite')
+			conn = sqlite3.connect('../tabla18.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
 
@@ -171,14 +174,14 @@ else:
 			sumatotal=sumaganados+sumaempatados+sumaperdidos
 
 			start =fecha+1
-			print "Ganados "+club+" : "+str(sumaganados)+" a la "+str(start)
-			print "Empatados: "+str(sumaempatados)
-			print "Perdidos: "+str(sumaperdidos)
-			print "Jugados local: "+str(subtotaljugados1)
-			print "Jugados visitante: "+str(subtotaljugadosa)
+			print("Ganados "+club+" : "+str(sumaganados)+" a la "+str(start))
+			print("Empatados: "+str(sumaempatados))
+			print("Perdidos: "+str(sumaperdidos))
+			print("Jugados local: "+str(subtotaljugados1))
+			print("Jugados visitante: "+str(subtotaljugadosa))
 			
 			cur.execute('''INSERT OR IGNORE INTO Partidos (Equipo, Jornada, PJ_Local, PJ_Visitante, PJ, PG_Local, PG__Visitante, PG, PE_Local, PE_Visitante, PE, PP_Local, PP_Visitante, PP)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )''',
 			 (club, fecha+1, subtotaljugados1, subtotaljugadosa, sumatotal, subtotalganados1, subtotalganados2, sumaganados, subtotalempatados1, subtotalempatados2, sumaempatados, subtotalperdidos1, subtotalperdidos2, sumaperdidos))
 			conn.commit()			
 	
-uh.close()
+cur.close()

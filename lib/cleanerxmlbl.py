@@ -3,7 +3,7 @@
 
 #Para limpiar el file Base.xml
 
-fname = raw_input("Enter a file name: ")
+fname = input("Enter a file name: ")
 if ( len(fname) < 1 ) : fname = 'Base.xml'
 
 fh = open(fname)

@@ -1,8 +1,8 @@
 ﻿import json
 import openpyxl
 
-print "Creating Excel file..."
-fh=open('../json/tablavoll17.json')
+print("Creating Excel file...")
+fh=open('../json/tablavoll18.json')
 stringdata=fh.read()
 jsondata=json.loads(stringdata)
 lst=list()
@@ -23,7 +23,7 @@ for i in range(0, 18):
     puntos=tabla[i]['size']
     lst.append([lugar, equipo, pj, pg, pe, pp, gf, gc, dif, puntos])
 #optional
-print lst
+print(lst)
 
 from openpyxl import Workbook, load_workbook
 wb=Workbook()
@@ -38,4 +38,4 @@ for item in lst:
     ws.append(item)
     #print dato
             
-wb.save('2017.xlsx')
+wb.save('2018.xlsx')
