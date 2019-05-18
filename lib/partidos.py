@@ -3,7 +3,7 @@ import json
 #import requests
 import sqlite3
 
-url="../2018-2019/bl.json"
+url="C:/Python33/blproject/2018-2019/bl.json"
 
 with open(url) as json_roh:
 	data=json_roh.read()

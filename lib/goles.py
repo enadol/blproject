@@ -1,9 +1,9 @@
-from input import jornada
+﻿from input import jornada
 import urllib
 import json
 import sqlite3
 
-url="../2018-2019/bl.json"
+url="C:/Python33/blproject/2018-2019/bl.json"
 
 with open(url) as json_roh:
 	data=json_roh.read()
@@ -24,8 +24,8 @@ def getEquipos():
 		#jornadascompletas=js['rounds'][fecha]['name']
 		
 		for i in range(0,9):
-			equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
-			contrario=js['rounds'][fecha]['matches'][i]['team2']['name']
+			equipo = js['rounds'][fecha]['matches'][i]['team1']['name']
+			contrario = js['rounds'][fecha]['matches'][i]['team2']['name']
 			if equipo not in equipos:
 				equipos.append(equipo)
 			if contrario not in equipos:
@@ -36,7 +36,7 @@ def getEquipos():
 def traspasar(viejo, nuevo):
 	for index in range(0,len(viejo)):
 		for i in nuevo:
-			nuevo=viejo
+			nuevo = viejo
 
 	return nuevo
 
@@ -44,7 +44,7 @@ def getGoles(equipo, goles):
 	return int(goles)
 
 def getGolesAcumulados(goleslocal, goles):
-	goleslocal=goleslocal+goles
+	goleslocal = goleslocal+goles
 	return goleslocal
 	
 print("Loading goles.py...")
@@ -52,24 +52,24 @@ print("Loading goles.py...")
 # jornada=int(jornadainput)-1
 
 
-if jornada <0 or jornada >=35:
+if jornada < 0 or jornada >= 35:
 	print("No se jugó la jornada "+str(jornada)+" en ese torneo. Verifique y vuelva a ingresar.")
-	jornada=None
+	jornada = None
 else:
-	clubes=getEquipos()
+	clubes = getEquipos()
 
 
 
 	for club in clubes:
-		subtotaluno=0
-		golesuno=0
-		golesdos=0
-		subtotaldos=0
-		golesa=0
-		golesb=0
-		subtotala=0
-		subtotalb=0
-		diferencia=0
+		subtotaluno = 0
+		golesuno = 0
+		golesdos = 0
+		subtotaldos = 0
+		golesa = 0
+		golesb = 0
+		subtotala = 0
+		subtotalb = 0
+		diferencia = 0
 		for fecha in range(0,jornada):
 
 			#jornadascompletas=js['rounds'][fecha]['name']
@@ -86,35 +86,35 @@ else:
 
 
 
-				equipo=js['rounds'][fecha]['matches'][i]['team1']['name']
-				contrario=js['rounds'][fecha]['matches'][i]['team2']['name']
-				afavor=js['rounds'][fecha]['matches'][i]['score1']
-				encontra=js['rounds'][fecha]['matches'][i]['score2']
+				equipo = js['rounds'][fecha]['matches'][i]['team1']['name']
+				contrario = js['rounds'][fecha]['matches'][i]['team2']['name']
+				afavor = js['rounds'][fecha]['matches'][i]['score1']
+				encontra = js['rounds'][fecha]['matches'][i]['score2']
 
 			
 
-				if equipo==club:
+				if equipo == club:
 
 					
-					golesuno=getGoles(equipo,afavor)
-					golesa=getGoles(contrario, encontra)
+					golesuno = getGoles(equipo,afavor)
+					golesa = getGoles(contrario, encontra)
 
-					subtotaluno=getGolesAcumulados(subtotaluno, golesuno)
-					subtotala=getGolesAcumulados(subtotala, golesa)
+					subtotaluno = getGolesAcumulados(subtotaluno, golesuno)
+					subtotala = getGolesAcumulados(subtotala, golesa)
 					
 
-				if contrario==club:
+				if contrario == club:
 					
-					golesdos=getGoles(contrario, encontra)
-					golesb=getGoles(equipo, afavor)
+					golesdos = getGoles(contrario, encontra)
+					golesb = getGoles(equipo, afavor)
 
-					subtotaldos=getGolesAcumulados(subtotaldos, golesdos)
-					subtotalb=getGolesAcumulados(subtotalb, golesb)
-				sumtotalfavor=subtotaluno+subtotaldos
-				sumtotalcontra=subtotala+subtotalb
-				diferencia=sumtotalfavor-sumtotalcontra
+					subtotaldos = getGolesAcumulados(subtotaldos, golesdos)
+					subtotalb = getGolesAcumulados(subtotalb, golesb)
+				sumtotalfavor = subtotaluno+subtotaldos
+				sumtotalcontra = subtotala + subtotalb
+				diferencia = sumtotalfavor - sumtotalcontra
 			
-			start=fecha+1
+			start = fecha+1
 			print("Goles acumulados a favor para el "+club+" en la jornada "+str(start)+": "+ str(sumtotalfavor))
 			print("Goles acumulados en contra para el "+club+" en la jornada "+str(start)+": "+ str(sumtotalcontra))
 			print("Diferencia acumulada de goles para el "+club+" en la jornada "+str(start)+": "+ str(diferencia)+"\n")

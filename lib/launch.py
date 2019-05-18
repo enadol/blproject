@@ -1,4 +1,5 @@
-import jsonformat
+#!python3
+#import jsonformat
 import cleanerteams
 import partidos
 import puntos
