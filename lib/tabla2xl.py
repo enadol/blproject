@@ -2,7 +2,7 @@
 import openpyxl
 
 print("Creating Excel file...")
-fh=open('../json/tablavoll18.json')
+fh=open('../json/tablavoll19.json')
 stringdata=fh.read()
 jsondata=json.loads(stringdata)
 lst=list()
@@ -38,4 +38,4 @@ for item in lst:
     ws.append(item)
     #print dato
             
-wb.save('2018.xlsx')
+wb.save('2019.xlsx')

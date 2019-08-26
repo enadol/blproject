@@ -1,6 +1,6 @@
 #!python3
 #import jsonformat
-import cleanerteams
+#import cleanerteams
 import partidos
 import puntos
 import goles

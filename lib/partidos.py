@@ -3,7 +3,7 @@ import json
 #import requests
 import sqlite3
 
-url="C:/Python33/blproject/2018-2019/bl.json"
+url="C:/Python33/blproject/2019-2020/bl.json"
 
 with open(url) as json_roh:
 	data=json_roh.read()
@@ -111,7 +111,7 @@ else:
 		for fecha in range(0,jornada):
 			#jornadascompletas=js['rounds'][fecha]['name']
 
-			conn = sqlite3.connect('../tabla18.sqlite')
+			conn = sqlite3.connect('../tabla19.sqlite')
 			cur = conn.cursor()
 			conn.text_factory = str
 

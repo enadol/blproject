@@ -1,22 +1,22 @@
 from input import jornada as howmany
 import sqlite3
 
-conn = sqlite3.connect('../tabla18.sqlite')
+conn = sqlite3.connect('../tabla19.sqlite')
 cur = conn.cursor()
-equipos=["Hertha BSC", "Werder Bremen", "Schalke 04", "VfB Stuttgart", "Eintracht Frankfurt",
-"FC Augsburg", "1. FC Nuernberg", "VfL Wolfsburg", "SC Freiburg", "Bayer 04 Leverkusen",
-"1899 Hoffenheim", "FC Bayern Muenchen", "Fortuna Duesseldorf", "RB Leipzig", "Hannover 96",
+equipos=["Hertha BSC", "Werder Bremen", "FC Schalke 04", "Fortuna Duesseldorf", "Eintracht Frankfurt",
+"FC Augsburg", "SC Paderborn 07", "VfL Wolfsburg", "SC Freiburg", "Bayer 04 Leverkusen",
+"TSG Hoffenheim", "Bayern Muenchen", "Fortuna Duesseldorf", "RB Leipzig", "1. FC Koeln",
 "Borussia Dortmund", "Borussia M'gladbach", "1. FSV Mainz 05"]
 id=1
 
 
-print("Creating JSON output on tablaevolution18.json...")
+print("Creating JSON output on tablaevolution19.json...")
 
 # howmany = int(raw_input("Cuantas jornadas? "))
 
 ##cur = conn.cursor()
 
-fhand = open('../json/tablaevolution18.json','w')
+fhand = open('../json/tablaevolution19.json','w')
 fhand.write('[')
 
 for equipo in equipos:
