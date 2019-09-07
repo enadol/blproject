@@ -1,4 +1,4 @@
-﻿from input import jornada
+﻿from partidos import jornada
 import urllib
 import json
 import sqlite3

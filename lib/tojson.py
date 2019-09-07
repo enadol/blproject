@@ -1,4 +1,4 @@
-from input import jornada as howmany
+from partidos import jornada as howmany
 import sqlite3
 conn = sqlite3.connect('../tabla19.sqlite')
 cur = conn.cursor()

@@ -1,4 +1,4 @@
-from input import jornada
+#from input import jornada
 import json
 #import requests
 import sqlite3
@@ -8,7 +8,8 @@ url="C:/Python33/blproject/2019-2020/bl.json"
 with open(url) as json_roh:
 	data=json_roh.read()
 	js=json.loads(data)
-	
+	uno = js['rounds']
+	jornada = len(uno)
 
 i=0
 puntos=0
